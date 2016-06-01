@@ -30,70 +30,62 @@ Example:
 -->
 
 <dom-module id="tpa-toast-action">
+
   <template>
+
     <style>
       paper-dialog {
-        margin: 0 0 !important;
-          position: fixed;
-          bottom: 0;
-          right: 150px;
-          width: 300px;
-          height: 400px;
-          border-top-left-radius: 8px;
-          border-top-right-radius: 8px;
-        }
-      paper-dialog > *:first-child {
-          margin-top: 0px;
-          padding: 0 10px;
+        position: absolute !important;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        margin: 0;
       }
-      .form {
-        background-color: #ffffff;
-      }
-      .dialogheader {
-        background-color: #555555;
-        color: #ffffff;
-      }
-      [horizontal] {
-        @apply(--layout-horizontal);
-      }
-      [flex] {
-        @apply(--layout-flex);
-      }
-      [justified] {
-        @apply(--layout-justified);
-      }
-      [self-end] {
-        @apply(--layout-self-end);
-      }
-      [center] {
-        @apply(--layout-center);
-      }
-      paper-icon-button {
-        color: white;
-      }
-  </style>
 
-    <paper-dialog id="dialog" no-cancel-on-outside-click>
-  		<div class="dialogheader" horizontal center justified>
-  			<div>Add Filesystem</div>
-  			<div><paper-icon-button icon="clear" alt="cancel" title="cancel" on-click="close"></paper-icon-button></div>
-  		</div>
-  		<div class="form">
-  			<content></content>
-  		</div>
-  	</paper-dialog>
+      #close{
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    </style>
+
+    <paper-dialog id="dialog" opened="{{opened}}" no-cancel-on-outside-click>
+
+      <div id="header">
+        <h2>{{header}}</h2>
+      </div>
+
+      <div id="close">
+        <paper-icon-button  icon="clear" alt="cancel" title="cancel" on-click="_close"></paper-icon-button>
+      </div>
+
+      <div>
+        <content></content>
+      </div>
+
+    </paper-dialog>
   </template>
 
   <script>
     Polymer({
       is: 'tpa-toast-action',
 
-      open: function() {
-        this.$.dialog.open();
+      properties: {
+        opened: {
+          type: Boolean,
+          value: false
+        },
+        header: {
+          type: String,
+          value: 'Header'
+        }
       },
-      close: function() {
-        this.$.dialog.close();
+
+      _close: function () {
+        this.opened = false;
       }
+
     });
   </script>
 </dom-module>
