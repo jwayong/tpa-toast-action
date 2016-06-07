@@ -2,9 +2,9 @@
   "name": "tpa-toast-action",
   "version": "1.0.7",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Januar Wayong <januar@gmail.com>"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "An element that shows a toast actionable form from the bottom of screen.",
   "keywords": [
     "web-component",
     "polymer",
