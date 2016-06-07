@@ -15,6 +15,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <title>tpa-toast-action Demo</title>
   <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
   <link rel="import" href="../tpa-toast-action.html">
+  <style is="custom-style">
+          tpa-toast-action {
+              position: absolute;
+              bottom: 0px;
+              right: 100px;
+              height: 500px;
+              width: 400px;
+          }
+
+          @media (max-width: 840px) {
+            /* FullScreen when Drawer is shown */
+            tpa-toast-action {
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                height: 2800px;
+                width: 2800px;
+            }
+          }
+  </style>
 </head>
 <body unresolved>
 
@@ -31,11 +51,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script>
   var demo = document.querySelector("#demo");
   demo.handleOpen = function () {
-    this.$.toastaction.open();
+    this.$.toastaction.opened = true;
   }
 
   demo.handleClose = function () {
-    this.$.toastaction.close();
+    this.$.toastaction.opened = false;
   }
 </script>
 
